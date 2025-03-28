@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvycl7o82i4qn"]
+
+[ext_resource type="Script" path="res://Element Scripts/spawn_proyectile.gd" id="1_ykr1e"]
+[ext_resource type="Texture2D" uid="uid://4yhfml7gctiq" path="res://Assets/Character.png" id="2_icdes"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58ksi"]
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(0.0316522, 0.0316522)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_ykr1e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_icdes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(51.1989, 51.1989)
+shape = SubResource("RectangleShape2D_58ksi")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

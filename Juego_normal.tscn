@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://djuthh0jooq0x"]
+
+[ext_resource type="Texture2D" uid="uid://cr3bnb1lrinet" path="res://Assets/Game background.png" id="1_dsjfl"]
+[ext_resource type="Texture2D" uid="uid://c0e6kmhnprrw4" path="res://Assets/Floor.png" id="2_d4qq2"]
+[ext_resource type="PackedScene" uid="uid://cgn7gjkktgjor" path="res://Game Elements/player.tscn" id="3_n5ol8"]
+[ext_resource type="PackedScene" uid="uid://cl8u1f8jcnkwy" path="res://Proyectiles/projectile_straight.tscn" id="5_0deu4"]
+[ext_resource type="PackedScene" uid="uid://dvycl7o82i4qn" path="res://Game Elements/spawner_proyectile.tscn" id="5_oyjuo"]
+[ext_resource type="PackedScene" uid="uid://dpsh3pn7ij6cu" path="res://Proyectiles/projectile_homing.tscn" id="7_uhp66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvbgs"]
+size = Vector2(19.9991, 20)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GameBackground" type="Sprite2D" parent="."]
+position = Vector2(3.05176e-05, -1)
+scale = Vector2(0.355352, 0.307819)
+texture = ExtResource("1_dsjfl")
+
+[node name="FloorElement" type="StaticBody2D" parent="."]
+position = Vector2(0, 278)
+scale = Vector2(0.539767, 0.0125897)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorElement"]
+position = Vector2(-0.0216963, 0)
+scale = Vector2(51.1771, 50.5241)
+shape = SubResource("RectangleShape2D_gvbgs")
+
+[node name="FloorSprite" type="Sprite2D" parent="FloorElement"]
+texture = ExtResource("2_d4qq2")
+
+[node name="Player" parent="." instance=ExtResource("3_n5ol8")]
+
+[node name="Spawner 1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_oyjuo")]
+position = Vector2(365, -202)
+projectile_scene = ExtResource("5_0deu4")
+player = NodePath("../Player")
+
+[node name="Spawner 2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_oyjuo")]
+position = Vector2(-384, -90)
+projectile_scene = ExtResource("7_uhp66")
+player = NodePath("../Player")

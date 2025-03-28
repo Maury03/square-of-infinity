@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://cmnjp3fl4t58a"]
+
+[ext_resource type="Texture2D" uid="uid://cq4vq3lu8jbsd" path="res://UI/UI Start.png" id="1_oll2i"]
+[ext_resource type="Texture2D" uid="uid://b7sk7q4c4st5" path="res://UI/UI Start selected.png" id="2_7jydr"]
+[ext_resource type="Texture2D" uid="uid://nm1pu0u5nt5d" path="res://UI/Menu background.png" id="3_r5xh8"]
+[ext_resource type="Texture2D" uid="uid://8fght16osxxd" path="res://UI/UI Triangle.png" id="4_txssx"]
+[ext_resource type="Script" path="res://UI Scripts/main_menu_actions.gd" id="4_w35hy"]
+[ext_resource type="Texture2D" uid="uid://cwe8rl24m54qu" path="res://UI/UI Tutorial.png" id="5_x40xn"]
+[ext_resource type="Texture2D" uid="uid://5j4sma6q78x0" path="res://UI/UI Tutorial selected.png" id="6_nh5nh"]
+[ext_resource type="Texture2D" uid="uid://tpavwu7mypo0" path="res://UI/UI Sound on.png" id="7_4jg07"]
+[ext_resource type="Texture2D" uid="uid://mmjo50otfnwg" path="res://UI/UI Sound on selected.png" id="8_1jb5e"]
+[ext_resource type="Texture2D" uid="uid://cqb1ydjpyfvue" path="res://UI/Ui Title.png" id="9_aij64"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-4, -39)
+scale = Vector2(0.394563, 0.394563)
+texture = ExtResource("3_r5xh8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="UI Triangle" type="Sprite2D" parent="."]
+position = Vector2(-128, 116)
+scale = Vector2(0.408771, 0.408771)
+texture = ExtResource("4_txssx")
+
+[node name="UI Title" type="Sprite2D" parent="."]
+position = Vector2(0, -193)
+scale = Vector2(0.381592, 0.381592)
+texture = ExtResource("9_aij64")
+
+[node name="UI Interactive" type="Node2D" parent="."]
+script = ExtResource("4_w35hy")
+
+[node name="Play_button" type="TextureButton" parent="UI Interactive"]
+z_index = 2
+offset_left = -545.0
+offset_top = 219.0
+offset_right = -52.0
+offset_bottom = 401.0
+scale = Vector2(0.412397, 0.412397)
+texture_normal = ExtResource("1_oll2i")
+texture_hover = ExtResource("2_7jydr")
+
+[node name="Tutorial_button" type="TextureButton" parent="UI Interactive"]
+offset_left = -310.0
+offset_top = 219.0
+offset_right = -128.0
+offset_bottom = 401.0
+scale = Vector2(0.414105, 0.414105)
+texture_normal = ExtResource("5_x40xn")
+texture_hover = ExtResource("6_nh5nh")
+
+[node name="Sound_button" type="TextureButton" parent="UI Interactive"]
+offset_left = -206.0
+offset_top = 219.0
+offset_right = -24.0
+offset_bottom = 401.0
+scale = Vector2(0.415447, 0.415447)
+texture_normal = ExtResource("7_4jg07")
+texture_hover = ExtResource("8_1jb5e")
+
+[connection signal="pressed" from="UI Interactive/Play_button" to="UI Interactive" method="_on_play_button_pressed"]
