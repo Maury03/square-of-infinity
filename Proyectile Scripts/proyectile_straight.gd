@@ -2,7 +2,7 @@ extends Area2D
 
 var speed = 300
 var direction = Vector2.ZERO
-var spawner_sprite = load("res://Elements/Simple core.png")
+var spawner_sprite = load("res://Assets/Simple core.png")
 var spawn_time = 1
 
 func _physics_process(delta):

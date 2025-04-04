@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
-
+# Player movement stuff
 const SPEED = 450.0
+const FRICTION = 50
 const JUMP_VELOCITY = -700.0
 
-
+# Movement process
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not is_powered:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
@@ -19,6 +20,9 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, FRICTION)
 
 	move_and_slide()
+
+# Player fighting stuff
+var is_powered = false

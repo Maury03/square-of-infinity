@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl8u1f8jcnkwy"]
+[gd_scene load_steps=5 format=3 uid="uid://cl8u1f8jcnkwy"]
 
 [ext_resource type="Script" path="res://Proyectile Scripts/proyectile_straight.gd" id="1_5ypef"]
 [ext_resource type="Texture2D" uid="uid://8sbgbuuo44cb" path="res://Assets/Proyectile.png" id="1_eoj1r"]
+[ext_resource type="Script" path="res://Element Scripts/line_trail.gd" id="3_a2r68"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lnb13"]
 
@@ -18,5 +19,13 @@ scale = Vector2(0.0195312, 0.0195312)
 texture = ExtResource("1_eoj1r")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+show_behind_parent = true
+top_level = true
+width = 20.0
+default_color = Color(0.615686, 0, 0.0784314, 0.501961)
+script = ExtResource("3_a2r68")
+length = 10
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_left_screen"]

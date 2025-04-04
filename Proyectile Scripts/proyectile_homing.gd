@@ -2,7 +2,7 @@ extends Area2D
 
 var speed = 270
 var direction = Vector2.ZERO
-var spawner_sprite = load("res://Elements/Homing core.png")
+var spawner_sprite = load("res://Assets/Homing core.png")
 var spawn_time = 3
 var player_node = Node2D
 

@@ -1,11 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://djuthh0jooq0x"]
+[gd_scene load_steps=10 format=3 uid="uid://djuthh0jooq0x"]
 
 [ext_resource type="Texture2D" uid="uid://cr3bnb1lrinet" path="res://Assets/Game background.png" id="1_dsjfl"]
+[ext_resource type="Shader" path="res://lava_lamp.gdshader" id="1_kj5em"]
 [ext_resource type="Texture2D" uid="uid://c0e6kmhnprrw4" path="res://Assets/Floor.png" id="2_d4qq2"]
 [ext_resource type="PackedScene" uid="uid://cgn7gjkktgjor" path="res://Game Elements/player.tscn" id="3_n5ol8"]
 [ext_resource type="PackedScene" uid="uid://cl8u1f8jcnkwy" path="res://Proyectiles/projectile_straight.tscn" id="5_0deu4"]
 [ext_resource type="PackedScene" uid="uid://dvycl7o82i4qn" path="res://Game Elements/spawner_proyectile.tscn" id="5_oyjuo"]
 [ext_resource type="PackedScene" uid="uid://dpsh3pn7ij6cu" path="res://Proyectiles/projectile_homing.tscn" id="7_uhp66"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gn2bv"]
+shader = ExtResource("1_kj5em")
+shader_parameter/top = 1.0
+shader_parameter/bottom = 0.0
+shader_parameter/blob_threshold = 1.5
+shader_parameter/random_seed = 0.0
+shader_parameter/blob_scale_x = 1.0
+shader_parameter/blob_scale_y = 1.0
+shader_parameter/blobs_enabled = true
+shader_parameter/blob_speed = 1.0
+shader_parameter/background_edge = Color(0, 0, 0, 1)
+shader_parameter/background_center = Color(0, 0, 0, 1)
+shader_parameter/background_alpha = 1.0
+shader_parameter/blob_top = Color(0.193748, 0.197199, 0.195234, 1)
+shader_parameter/blob_bottom = Color(0.176471, 0.176471, 0.176471, 1)
+shader_parameter/blob_alpha = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvbgs"]
 size = Vector2(19.9991, 20)
@@ -15,6 +33,7 @@ size = Vector2(19.9991, 20)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="GameBackground" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gn2bv")
 position = Vector2(3.05176e-05, -1)
 scale = Vector2(0.355352, 0.307819)
 texture = ExtResource("1_dsjfl")
@@ -32,6 +51,8 @@ shape = SubResource("RectangleShape2D_gvbgs")
 texture = ExtResource("2_d4qq2")
 
 [node name="Player" parent="." instance=ExtResource("3_n5ol8")]
+collision_layer = 15
+collision_mask = 15
 
 [node name="Spawner 1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_oyjuo")]
 position = Vector2(365, -202)

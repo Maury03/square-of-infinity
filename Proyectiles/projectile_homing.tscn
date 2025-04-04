@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpsh3pn7ij6cu"]
+[gd_scene load_steps=5 format=3 uid="uid://dpsh3pn7ij6cu"]
 
 [ext_resource type="Texture2D" uid="uid://dvtxq45bju32e" path="res://Assets/Homing proyectile.png" id="1_8r7co"]
 [ext_resource type="Script" path="res://Proyectile Scripts/proyectile_homing.gd" id="1_23w1j"]
+[ext_resource type="Script" path="res://Element Scripts/line_trail.gd" id="3_ming8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_03p22"]
 radius = 335.38
 
 [node name="Area2D" type="Area2D"]
 scale = Vector2(0.0216785, 0.0216785)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_23w1j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -21,5 +24,13 @@ shape = SubResource("CircleShape2D_03p22")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 15.0
 autostart = true
+
+[node name="Line2D" type="Line2D" parent="."]
+show_behind_parent = true
+top_level = true
+width = 15.0
+default_color = Color(0.396078, 0.0862745, 0.898039, 0.501961)
+script = ExtResource("3_ming8")
+length = 10
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
