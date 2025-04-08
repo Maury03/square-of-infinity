@@ -17,3 +17,15 @@ func setup(player: Node2D):
 
 func _on_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_player_entered(player: Node2D) -> void:
+	if not player.is_defeated:
+		visible = false
+		player.is_defeated = true
+		player.velocity.y = -300
+		player.get_node("CollisionShape2D").set_deferred("disabled", true)
+		await get_tree().create_timer(2).timeout
+		get_tree().change_scene_to_file("res://Menu principal.tscn")
+	else:
+		pass
