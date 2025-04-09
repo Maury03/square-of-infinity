@@ -76,10 +76,11 @@ player = NodePath("../Player")
 
 [node name="OrbTimer" type="Timer" parent="."]
 wait_time = 7.0
+one_shot = true
 autostart = true
 
 [node name="KillZone" type="Area2D" parent="."]
-position = Vector2(0, 2.38419e-07)
+position = Vector2(3.55271e-15, -45)
 scale = Vector2(1.53433, -0.85821)
 script = ExtResource("10_org7m")
 

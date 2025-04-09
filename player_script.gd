@@ -39,8 +39,9 @@ func power_up() -> void:
 
 func power_down() -> void:
 	$Sprite2D.texture = regular_sprite
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.3).timeout
 	is_powered = false
+	get_parent().get_node("OrbTimer").start()
 	$Line2D.default_color = regular_trail
 
 func defeat() -> void:
