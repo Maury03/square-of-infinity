@@ -16,3 +16,9 @@ func _ready() -> void:
 	$Sprite2D.texture = projectile.spawner_sprite
 	$Timer.wait_time = projectile.spawn_time
 	projectile.queue_free()
+
+
+func _on_player_entered(player: Node2D) -> void:
+	if player.is_powered:
+		player.power_down()
+		queue_free()

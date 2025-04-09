@@ -1,12 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://djuthh0jooq0x"]
+[gd_scene load_steps=13 format=3 uid="uid://djuthh0jooq0x"]
 
 [ext_resource type="Texture2D" uid="uid://cr3bnb1lrinet" path="res://Assets/Game background.png" id="1_dsjfl"]
 [ext_resource type="Shader" path="res://lava_lamp.gdshader" id="1_kj5em"]
+[ext_resource type="Script" path="res://main_game.gd" id="1_rsnt5"]
+[ext_resource type="PackedScene" uid="uid://b38x0synuxyjf" path="res://Game Elements/energy_orb.tscn" id="2_1j2vg"]
 [ext_resource type="Texture2D" uid="uid://c0e6kmhnprrw4" path="res://Assets/Floor.png" id="2_d4qq2"]
 [ext_resource type="PackedScene" uid="uid://cgn7gjkktgjor" path="res://Game Elements/player.tscn" id="3_n5ol8"]
 [ext_resource type="PackedScene" uid="uid://cl8u1f8jcnkwy" path="res://Proyectiles/projectile_straight.tscn" id="5_0deu4"]
 [ext_resource type="PackedScene" uid="uid://dvycl7o82i4qn" path="res://Game Elements/spawner_proyectile.tscn" id="5_oyjuo"]
 [ext_resource type="PackedScene" uid="uid://dpsh3pn7ij6cu" path="res://Proyectiles/projectile_homing.tscn" id="7_uhp66"]
+[ext_resource type="Script" path="res://Element Scripts/kill_zone.gd" id="10_org7m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gn2bv"]
 shader = ExtResource("1_kj5em")
@@ -29,6 +32,8 @@ shader_parameter/blob_alpha = 1.0
 size = Vector2(19.9991, 20)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_rsnt5")
+power_orb = ExtResource("2_1j2vg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -54,8 +59,8 @@ texture = ExtResource("2_d4qq2")
 
 [node name="Player" parent="." instance=ExtResource("3_n5ol8")]
 scale = Vector2(0.025859, 0.025859)
-collision_layer = 31
-collision_mask = 31
+collision_layer = 7
+collision_mask = 23
 platform_floor_layers = 4294901776
 platform_wall_layers = 32
 
@@ -68,3 +73,20 @@ player = NodePath("../Player")
 position = Vector2(-384, -90)
 projectile_scene = ExtResource("7_uhp66")
 player = NodePath("../Player")
+
+[node name="OrbTimer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="KillZone" type="Area2D" parent="."]
+position = Vector2(0, 2.38419e-07)
+scale = Vector2(1.53433, -0.85821)
+script = ExtResource("10_org7m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(-0.0216963, 0)
+scale = Vector2(51.1771, 50.5241)
+shape = SubResource("RectangleShape2D_gvbgs")
+
+[connection signal="timeout" from="OrbTimer" to="." method="_on_orb_timer_timeout"]
+[connection signal="body_exited" from="KillZone" to="KillZone" method="_on_player_out"]

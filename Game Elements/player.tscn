@@ -7,6 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v856w"]
 
 [node name="PlayerChar" type="CharacterBody2D"]
+z_index = 10
 scale = Vector2(0.034218, 0.034218)
 platform_floor_layers = 4294901761
 script = ExtResource("1_hwr4e")

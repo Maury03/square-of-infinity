@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b38x0synuxyjf"]
+
+[ext_resource type="Script" path="res://Element Scripts/energy_ball.gd" id="1_cjj66"]
+[ext_resource type="Texture2D" uid="uid://crtmr5c1ehcy" path="res://Assets/Energy Orb.png" id="1_dh80l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8bmfk"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oveca"]
+radius = 18.0278
+
+[node name="EnergyOrb" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_cjj66")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0356454, 0.0356454)
+texture = ExtResource("1_dh80l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8bmfk")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Player_Detection" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Detection"]
+shape = SubResource("CircleShape2D_oveca")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exit"]
+[connection signal="body_entered" from="Player_Detection" to="." method="_on_player_entered"]
