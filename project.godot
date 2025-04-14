@@ -15,6 +15,10 @@ run/main_scene="res://Menu principal.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://UI/App icon.svg"
 
+[autoload]
+
+global_variables="*res://global_variables.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"

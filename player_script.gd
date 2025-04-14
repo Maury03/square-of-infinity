@@ -3,7 +3,7 @@ extends CharacterBody2D
 # Player movement stuff
 const SPEED = 450.0
 const FRICTION = 50
-const JUMP_VELOCITY = -700.0
+const JUMP_VELOCITY = -650.0
 
 # Movement process
 func _physics_process(delta: float) -> void:
@@ -49,5 +49,6 @@ func defeat() -> void:
 		is_defeated = true
 		velocity.y = -300
 		get_node("CollisionShape2D").set_deferred("disabled", true)
+		get_parent().finish_game()
 		await get_tree().create_timer(2).timeout
 		get_tree().change_scene_to_file("res://Menu principal.tscn")

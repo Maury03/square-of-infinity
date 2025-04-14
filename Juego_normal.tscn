@@ -6,9 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b38x0synuxyjf" path="res://Game Elements/energy_orb.tscn" id="2_1j2vg"]
 [ext_resource type="Texture2D" uid="uid://c0e6kmhnprrw4" path="res://Assets/Floor.png" id="2_d4qq2"]
 [ext_resource type="PackedScene" uid="uid://cgn7gjkktgjor" path="res://Game Elements/player.tscn" id="3_n5ol8"]
-[ext_resource type="PackedScene" uid="uid://cl8u1f8jcnkwy" path="res://Proyectiles/projectile_straight.tscn" id="5_0deu4"]
-[ext_resource type="PackedScene" uid="uid://dvycl7o82i4qn" path="res://Game Elements/spawner_proyectile.tscn" id="5_oyjuo"]
-[ext_resource type="PackedScene" uid="uid://dpsh3pn7ij6cu" path="res://Proyectiles/projectile_homing.tscn" id="7_uhp66"]
+[ext_resource type="Texture2D" uid="uid://bs0v8380aghd1" path="res://UI/UI Empty.png" id="8_l3a13"]
 [ext_resource type="Script" path="res://Element Scripts/kill_zone.gd" id="10_org7m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gn2bv"]
@@ -31,6 +29,12 @@ shader_parameter/blob_alpha = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvbgs"]
 size = Vector2(19.9991, 20)
 
+[sub_resource type="SystemFont" id="SystemFont_7exqv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6mck0"]
+font = SubResource("SystemFont_7exqv")
+font_size = 68
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_rsnt5")
 power_orb = ExtResource("2_1j2vg")
@@ -44,8 +48,8 @@ scale = Vector2(0.355352, 0.307819)
 texture = ExtResource("1_dsjfl")
 
 [node name="FloorElement" type="StaticBody2D" parent="."]
-position = Vector2(0, 278)
-scale = Vector2(0.979768, 0.0125897)
+position = Vector2(1, 323)
+scale = Vector2(1.13977, 0.0125897)
 collision_layer = 16
 collision_mask = 16
 
@@ -64,16 +68,6 @@ collision_mask = 23
 platform_floor_layers = 4294901776
 platform_wall_layers = 32
 
-[node name="Spawner 1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_oyjuo")]
-position = Vector2(365, -202)
-projectile_scene = ExtResource("5_0deu4")
-player = NodePath("../Player")
-
-[node name="Spawner 2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_oyjuo")]
-position = Vector2(-384, -90)
-projectile_scene = ExtResource("7_uhp66")
-player = NodePath("../Player")
-
 [node name="OrbTimer" type="Timer" parent="."]
 wait_time = 7.0
 one_shot = true
@@ -88,6 +82,27 @@ script = ExtResource("10_org7m")
 position = Vector2(-0.0216963, 0)
 scale = Vector2(51.1771, 50.5241)
 shape = SubResource("RectangleShape2D_gvbgs")
+
+[node name="EndingScreen" type="Node2D" parent="."]
+visible = false
+z_index = 100
+position = Vector2(0, -206)
+scale = Vector2(0.493917, 0.493917)
+
+[node name="Label" type="Label" parent="EndingScreen"]
+z_index = 1
+offset_left = -611.0
+offset_top = -113.0
+offset_right = 604.0
+offset_bottom = 118.0
+text = "Avanzaste 0 niveles"
+label_settings = SubResource("LabelSettings_6mck0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="EndingScreen"]
+position = Vector2(-2.02463, 0)
+texture = ExtResource("8_l3a13")
 
 [connection signal="timeout" from="OrbTimer" to="." method="_on_orb_timer_timeout"]
 [connection signal="body_exited" from="KillZone" to="KillZone" method="_on_player_out"]

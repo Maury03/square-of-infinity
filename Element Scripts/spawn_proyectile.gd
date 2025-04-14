@@ -14,11 +14,12 @@ func _on_timer_timeout():
 func _ready() -> void:
 	var projectile = projectile_scene.instantiate()
 	$Sprite2D.texture = projectile.spawner_sprite
-	$Timer.wait_time = projectile.spawn_time
+	$Timer.wait_time = global_variables.proyectile_spawn_rate * projectile.spawn_time_multiplier
 	projectile.queue_free()
 
 
 func _on_player_entered(player: Node2D) -> void:
 	if player.is_powered:
 		player.power_down()
+		get_parent().destroyed_core()
 		queue_free()

@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmnjp3fl4t58a"]
+[gd_scene load_steps=13 format=3 uid="uid://cmnjp3fl4t58a"]
 
+[ext_resource type="Script" path="res://main_menu.gd" id="1_56e6w"]
 [ext_resource type="Texture2D" uid="uid://cq4vq3lu8jbsd" path="res://UI/UI Start.png" id="1_oll2i"]
 [ext_resource type="Texture2D" uid="uid://b7sk7q4c4st5" path="res://UI/UI Start selected.png" id="2_7jydr"]
 [ext_resource type="Texture2D" uid="uid://nm1pu0u5nt5d" path="res://UI/Menu background.png" id="3_r5xh8"]
 [ext_resource type="Texture2D" uid="uid://8fght16osxxd" path="res://UI/UI Triangle.png" id="4_txssx"]
 [ext_resource type="Script" path="res://UI Scripts/main_menu_actions.gd" id="4_w35hy"]
+[ext_resource type="Texture2D" uid="uid://b5hy73w5kmbpm" path="res://UI/UI Information.png" id="5_tqi5g"]
 [ext_resource type="Texture2D" uid="uid://cwe8rl24m54qu" path="res://UI/UI Tutorial.png" id="5_x40xn"]
 [ext_resource type="Texture2D" uid="uid://5j4sma6q78x0" path="res://UI/UI Tutorial selected.png" id="6_nh5nh"]
 [ext_resource type="Texture2D" uid="uid://tpavwu7mypo0" path="res://UI/UI Sound on.png" id="7_4jg07"]
@@ -12,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cqb1ydjpyfvue" path="res://UI/Ui Title.png" id="9_aij64"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_56e6w")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-4, -39)
@@ -26,9 +29,15 @@ scale = Vector2(0.408771, 0.408771)
 texture = ExtResource("4_txssx")
 
 [node name="UI Title" type="Sprite2D" parent="."]
-position = Vector2(0, -193)
+position = Vector2(0, -229)
 scale = Vector2(0.381592, 0.381592)
 texture = ExtResource("9_aij64")
+
+[node name="UI Info" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 34)
+scale = Vector2(0.277472, 0.277472)
+texture = ExtResource("5_tqi5g")
 
 [node name="UI Interactive" type="Node2D" parent="."]
 script = ExtResource("4_w35hy")
@@ -62,3 +71,4 @@ texture_normal = ExtResource("7_4jg07")
 texture_hover = ExtResource("8_1jb5e")
 
 [connection signal="pressed" from="UI Interactive/Play_button" to="UI Interactive" method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI Interactive/Tutorial_button" to="UI Interactive" method="_on_tutorial_button_pressed"]

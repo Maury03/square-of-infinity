@@ -1,10 +1,23 @@
 extends Area2D
 
-var speed = 300
+# Velocidad del proyectil, se puede utilizaer la variable
+# global proyectile_speed para que aumente con la dificultad
+var speed = global_variables.proyectile_speed
 var direction = Vector2.ZERO
 var spawner_sprite = load("res://Assets/Simple core.png")
-var spawn_time = 1
-var has_collided = false
+
+# Entre mas bajo sea el numero, mas rapido se genera el proyectil
+var spawn_time_multiplier = 0.25
+
+# Cantidad de nucleos de este proyectil en primer nivel
+var starting_amount = 1
+
+# Cuantos nucleos mas de este proyectil apareceran por nivel
+# Con valor de 1 se suma un proyectil cada nivel, con valor de 2 se suman dos por nivel
+# Con valor 0.5 se suma uno cada dos niveles
+var level_increase = 0.5
+
+var player_node = Node2D
 
 func _physics_process(delta):
 	position += direction * speed * delta
@@ -14,7 +27,6 @@ func setup(player: Node2D):
 
 
 func _on_left_screen() -> void:
-	if not has_collided:
 		queue_free()
 
 
