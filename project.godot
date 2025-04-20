@@ -18,6 +18,7 @@ config/icon="res://UI/App icon.svg"
 [autoload]
 
 global_variables="*res://global_variables.gd"
+global_sound="*res://global_sound.tscn"
 
 [display]
 

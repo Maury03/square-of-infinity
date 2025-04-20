@@ -15,7 +15,10 @@ var starting_amount = 1
 # Cuantos nucleos mas de este proyectil apareceran por nivel
 # Con valor de 1 se suma un proyectil cada nivel, con valor de 2 se suman dos por nivel
 # Con valor 0.5 se suma uno cada dos niveles
-var level_increase = 0.5
+var level_increase = 1
+
+# Cantidad máxima de nucleos de este tipo que pueden aparecer
+var max_cores = 2
 
 var player_node = Node2D
 
@@ -27,7 +30,8 @@ func setup(player: Node2D):
 
 
 func _on_left_screen() -> void:
-		queue_free()
+	await get_tree().create_timer(2).timeout
+	queue_free()
 
 
 func _on_player_entered(player: Node2D) -> void:

@@ -7,7 +7,7 @@ var camera_rect: Rect2
 var cores_remaining = 0
 
 func _ready() -> void:
-	camera_rect = get_camera_view_rect($Camera2D)
+	camera_rect = get_camera_view_rect()
 	$OrbTimer.wait_time = global_variables.orb_spawn_time
 	player = $Player
 	generate_cores()
@@ -37,7 +37,8 @@ func generate_cores() -> void:
 			counter += 1
 
 # Obtener area de la camara
-func get_camera_view_rect(camera: Camera2D) -> Rect2:
+func get_camera_view_rect() -> Rect2:
+	var camera = $Camera2D
 	var screen_size = get_viewport().get_visible_rect().size
 	var zoomed_size = screen_size * camera.zoom
 	var camera_pos = camera.get_global_position()
@@ -49,10 +50,19 @@ func get_camera_view_rect(camera: Camera2D) -> Rect2:
 func finish_game() -> void:
 	$EndingScreen.visible = true
 	$EndingScreen/Label.text = "Avanzaste " + str(global_variables.player_score) + " niveles"
+	await get_tree().create_timer(2).timeout
+	get_tree().change_scene_to_file("res://Menu principal.tscn")
 
 func destroyed_core() -> void:
 	cores_remaining -= 1
 	if cores_remaining == 0:
 		global_variables.player_score +=1
 		global_variables.increase_difficulty()
+		if global_variables.audio_enabled:
+			global_sound.stream = load("res://Sound Effects/teleport.wav")
+			global_sound.play(0.0)
 		get_tree().change_scene_to_file("res://Juego_normal.tscn")
+	else:
+		if global_variables.audio_enabled:
+			$AudioStreamPlayer.stream = load("res://Sound Effects/power_down.wav")
+			$AudioStreamPlayer.play(0.0)

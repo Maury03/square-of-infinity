@@ -12,10 +12,13 @@ var spawn_time_multiplier = 0.75
 # Cantidad de nucleos de este proyectil en primer nivel
 var starting_amount = 0
 
+# Cantidad máxima de nucleos de este tipo que pueden aparecer
+var max_cores = 1
+
 # Cuantos nucleos mas de este proyectil apareceran por nivel
 # Con valor de 1 se suma un proyectil cada nivel, con valor de 2 se suman dos por nivel
 # Con valor 0.5 se suma uno cada dos niveles
-var level_increase = 0.1
+var level_increase = 0.2
 
 var player_node = Node2D
 

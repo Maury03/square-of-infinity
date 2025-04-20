@@ -33,6 +33,9 @@ var regular_trail = Color8(255, 255, 255, 128)
 var shielded_trail = Color8(255, 215, 36, 128)
 
 func power_up() -> void:
+	if global_variables.audio_enabled:
+		$AudioStreamPlayer.stream = load("res://Sound Effects/power_up.wav")
+		$AudioStreamPlayer.play(0.0)
 	is_powered = true
 	$Sprite2D.texture = shielded_sprite
 	$Line2D.default_color = shielded_trail
@@ -46,9 +49,10 @@ func power_down() -> void:
 
 func defeat() -> void:
 	if not is_defeated and not is_powered:
+		if global_variables.audio_enabled:
+			$AudioStreamPlayer.stream = load("res://Sound Effects/player_defeat.wav")
+			$AudioStreamPlayer.play(0.0)
 		is_defeated = true
 		velocity.y = -300
 		get_node("CollisionShape2D").set_deferred("disabled", true)
 		get_parent().finish_game()
-		await get_tree().create_timer(2).timeout
-		get_tree().change_scene_to_file("res://Menu principal.tscn")

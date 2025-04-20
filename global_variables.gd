@@ -1,5 +1,8 @@
 extends Node
 
+# Sonido
+var audio_enabled = true
+
 # Conteo de niveles superados
 var player_score = 0
 
@@ -28,6 +31,7 @@ func fill_array() -> void:
 						"spawner_sprite": temp_instance.spawner_sprite,
 						"amount": temp_instance.starting_amount,
 						"level_increase": temp_instance.level_increase,
+						"max_limit": temp_instance.max_cores,
 						"scene": packed_scene
 					}
 					proyectile_array.append(proyectile_data)
@@ -40,9 +44,12 @@ func increase_difficulty() -> void:
 	if (player_score % 5 == 0):
 		if proyectile_spawn_rate > 1: proyectile_spawn_rate -= 1
 	
+	proyectile_speed += 10
+	
 	# Aumentar cantidad de nucleos por proyectil
 	for proyectile_data in proyectile_array:
-		proyectile_data.amount += proyectile_data.level_increase
+		if proyectile_data.amount < proyectile_data.max_limit:
+			proyectile_data.amount += proyectile_data.level_increase
 
 func reset_variables():
 	player_score = 0

@@ -1,30 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://djuthh0jooq0x"]
+[gd_scene load_steps=11 format=3 uid="uid://djuthh0jooq0x"]
 
 [ext_resource type="Texture2D" uid="uid://cr3bnb1lrinet" path="res://Assets/Game background.png" id="1_dsjfl"]
-[ext_resource type="Shader" path="res://lava_lamp.gdshader" id="1_kj5em"]
 [ext_resource type="Script" path="res://main_game.gd" id="1_rsnt5"]
 [ext_resource type="PackedScene" uid="uid://b38x0synuxyjf" path="res://Game Elements/energy_orb.tscn" id="2_1j2vg"]
 [ext_resource type="Texture2D" uid="uid://c0e6kmhnprrw4" path="res://Assets/Floor.png" id="2_d4qq2"]
 [ext_resource type="PackedScene" uid="uid://cgn7gjkktgjor" path="res://Game Elements/player.tscn" id="3_n5ol8"]
 [ext_resource type="Texture2D" uid="uid://bs0v8380aghd1" path="res://UI/UI Empty.png" id="8_l3a13"]
 [ext_resource type="Script" path="res://Element Scripts/kill_zone.gd" id="10_org7m"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gn2bv"]
-shader = ExtResource("1_kj5em")
-shader_parameter/top = 1.0
-shader_parameter/bottom = 0.0
-shader_parameter/blob_threshold = 1.5
-shader_parameter/random_seed = 0.0
-shader_parameter/blob_scale_x = 1.0
-shader_parameter/blob_scale_y = 1.0
-shader_parameter/blobs_enabled = true
-shader_parameter/blob_speed = 1.0
-shader_parameter/background_edge = Color(0, 0, 0, 1)
-shader_parameter/background_center = Color(0, 0, 0, 1)
-shader_parameter/background_alpha = 1.0
-shader_parameter/blob_top = Color(0.193748, 0.197199, 0.195234, 1)
-shader_parameter/blob_bottom = Color(0.176471, 0.176471, 0.176471, 1)
-shader_parameter/blob_alpha = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvbgs"]
 size = Vector2(19.9991, 20)
@@ -42,7 +24,6 @@ power_orb = ExtResource("2_1j2vg")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="GameBackground" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_gn2bv")
 position = Vector2(3.05176e-05, -1)
 scale = Vector2(0.355352, 0.307819)
 texture = ExtResource("1_dsjfl")
@@ -103,6 +84,8 @@ vertical_alignment = 1
 [node name="Sprite2D" type="Sprite2D" parent="EndingScreen"]
 position = Vector2(-2.02463, 0)
 texture = ExtResource("8_l3a13")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="OrbTimer" to="." method="_on_orb_timer_timeout"]
 [connection signal="body_exited" from="KillZone" to="KillZone" method="_on_player_out"]

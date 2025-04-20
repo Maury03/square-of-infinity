@@ -72,3 +72,4 @@ texture_hover = ExtResource("8_1jb5e")
 
 [connection signal="pressed" from="UI Interactive/Play_button" to="UI Interactive" method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI Interactive/Tutorial_button" to="UI Interactive" method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="UI Interactive/Sound_button" to="UI Interactive" method="_on_sound_button_pressed"]
