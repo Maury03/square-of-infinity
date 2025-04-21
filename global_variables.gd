@@ -16,28 +16,24 @@ var proyectile_array = []
 
 # Llenado del array con todos los proyectiles
 func fill_array() -> void:
-	var proyectile_folder = "res://Proyectiles"
-	var dir = DirAccess.open(proyectile_folder)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if not dir.current_is_dir() and file_name.ends_with(".tscn"):
-				var scene_path = proyectile_folder + "/" + file_name
-				var packed_scene = load(scene_path)
-				if packed_scene:
-					var temp_instance = packed_scene.instantiate()
-					var proyectile_data = {
-						"spawner_sprite": temp_instance.spawner_sprite,
-						"amount": temp_instance.starting_amount,
-						"level_increase": temp_instance.level_increase,
-						"max_limit": temp_instance.max_cores,
-						"scene": packed_scene
-					}
-					proyectile_array.append(proyectile_data)
-					temp_instance.queue_free()
-			file_name = dir.get_next()
-		dir.list_dir_end()
+	var proyectile_scenes = [
+		"res://Proyectiles/projectile_straight.tscn",
+		"res://Proyectiles/projectile_homing.tscn",
+		"res://Proyectiles/projectile_dvd.tscn"
+		]
+	for scene in proyectile_scenes:
+		var packed_scene = load(scene)
+		if packed_scene:
+			var temp_instance = packed_scene.instantiate()
+			var proyectile_data = {
+				"spawner_sprite": temp_instance.spawner_sprite,
+				"amount": temp_instance.starting_amount,
+				"level_increase": temp_instance.level_increase,
+				"max_limit": temp_instance.max_cores,
+				"scene": packed_scene
+			}
+			proyectile_array.append(proyectile_data)
+			temp_instance.queue_free()
 
 # Incrementar la dificultad del juego
 func increase_difficulty() -> void:
