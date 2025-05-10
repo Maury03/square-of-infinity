@@ -6,6 +6,7 @@ var player: CharacterBody2D
 var camera_rect: Rect2
 var cores_remaining = 0
 
+# Se llenan las variables y se generan los nucleos
 func _ready() -> void:
 	camera_rect = get_camera_view_rect()
 	$OrbTimer.wait_time = global_variables.orb_spawn_time
@@ -46,13 +47,14 @@ func get_camera_view_rect() -> Rect2:
 
 	return Rect2(camera_pos - half_zoomed, zoomed_size)
 
-
+# Proceso de derrota del jugador
 func finish_game() -> void:
 	$EndingScreen.visible = true
 	$EndingScreen/Label.text = "Avanzaste " + str(global_variables.player_score) + " niveles"
 	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("res://Menu principal.tscn")
 
+# Maneja audios al fundir un nucleo y cambio de nivel al destruir todos
 func destroyed_core() -> void:
 	cores_remaining -= 1
 	if cores_remaining == 0:
@@ -63,6 +65,7 @@ func destroyed_core() -> void:
 			global_sound.play(0.0)
 		get_tree().change_scene_to_file("res://Juego_normal.tscn")
 	else:
+		$OrbTimer.wait_time = $OrbTimer.wait_time / 2
 		if global_variables.audio_enabled:
 			$AudioStreamPlayer.stream = load("res://Sound Effects/power_down.wav")
 			$AudioStreamPlayer.play(0.0)

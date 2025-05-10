@@ -47,6 +47,7 @@ func increase_difficulty() -> void:
 		if proyectile_data.amount < proyectile_data.max_limit:
 			proyectile_data.amount += proyectile_data.level_increase
 
+# Restaurar variables a sus valores originales
 func reset_variables():
 	player_score = 0
 	proyectile_speed = 500

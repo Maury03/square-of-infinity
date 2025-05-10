@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 2134 2134" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(2.08333,0,0,2.08333,0,-2093.76)">
+<svg width="100%" height="100%" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,0,-2171.11)">
         <clipPath id="_clip1">
-            <rect id="Menu-principal" serif:id="Menu principal" x="3514.55" y="2247.16" width="3433.69" height="2289.8"/>
+            <rect id="Menu-principal" serif:id="Menu principal" x="3514.55" y="3413.26" width="3433.69" height="2289.8"/>
         </clipPath>
         <g clip-path="url(#_clip1)">
-            <g transform="matrix(0.48,-0,-0,0.48,-0,1005)">
+            <g transform="matrix(1,-0,-0,1,-0,2171.11)">
             </g>
         </g>
-        <g id="App-icon" serif:id="App icon" transform="matrix(1,0,0,1,0,1005)">
-            <rect x="0" y="0" width="1024" height="1024" style="fill:none;"/>
-            <g transform="matrix(1.18208,0,0,1.18534,-97.4973,-1297.65)">
-                <path d="M948.752,1281.47L948.752,1770.63C948.752,1873.68 864.856,1957.35 761.521,1957.35L273.387,1957.35C170.052,1957.35 86.157,1873.68 86.157,1770.63L86.157,1281.47C86.157,1178.42 170.052,1094.75 273.387,1094.75L761.521,1094.75C864.856,1094.75 948.752,1178.42 948.752,1281.47Z"/>
+        <clipPath id="_clip2">
+            <rect id="Main-Menu-Background" serif:id="Main Menu Background" x="-76.416" y="3406.1" width="3433.69" height="2289.8"/>
+        </clipPath>
+        <g clip-path="url(#_clip2)">
+            <g transform="matrix(1,-0,-0,1,-0,2171.11)">
             </g>
-            <g transform="matrix(1.48121,0,0,1.48121,-422.224,-83.5824)">
+        </g>
+        <g id="App-icon" serif:id="App icon" transform="matrix(1,0,0,1,0,2171.11)">
+            <rect x="0" y="0" width="1024" height="1024" style="fill:none;"/>
+            <g transform="matrix(0.953244,0,0,0.955272,19.8264,-945.792)">
+                <path d="M948.752,1288.71L948.752,1763.39C948.752,1870.44 861.657,1957.35 754.381,1957.35L280.528,1957.35C173.252,1957.35 86.157,1870.44 86.157,1763.39L86.157,1288.71C86.157,1181.66 173.252,1094.75 280.528,1094.75L754.381,1094.75C861.657,1094.75 948.752,1181.66 948.752,1288.71Z"/>
+            </g>
+            <g transform="matrix(1.14233,0,0,1.14233,-199.289,55.4256)">
                 <g transform="matrix(0.321066,-1.94478e-17,-1.98339e-17,0.321066,-484.751,145.029)">
                     <rect x="3435.95" y="89.28" width="806.72" height="806.72" style="fill:rgb(229,23,49);"/>
                 </g>
@@ -22,7 +29,7 @@
                     <rect x="3435.95" y="89.28" width="806.72" height="806.72" style="fill:rgb(157,0,20);"/>
                 </g>
             </g>
-            <g transform="matrix(1.34668,0,0,1.34668,-74.6722,-239.326)">
+            <g transform="matrix(1.03858,0,0,1.03858,68.7488,-64.6866)">
                 <g transform="matrix(2.08442,2.08442,-1.98182,1.98182,-5529.05,-16589)">
                     <rect x="5520.25" y="2845.8" width="47.035" height="90.956" style="fill:rgb(114,16,16);"/>
                 </g>

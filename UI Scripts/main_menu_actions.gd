@@ -2,6 +2,7 @@ extends Node2D
 
 var show_tutorial = false
 
+# Cargar asset de boton de sonido
 func _ready() -> void:
 	if global_variables.audio_enabled:
 		$Sound_button.texture_normal = load("res://UI/UI Sound on.png")
@@ -9,6 +10,8 @@ func _ready() -> void:
 	else:
 		$Sound_button.texture_normal = load("res://UI/UI Sound off.png")
 		$Sound_button.texture_hover = load("res://UI/UI Sound off selected.png")
+
+# Funcionamiento de botones de menu principal
 
 func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Juego_normal.tscn")

@@ -32,6 +32,7 @@ func _ready() -> void:
 	# Obtener tamaño de la ventana
 	pantalla = get_parent().get_camera_view_rect()
 
+# Movimiento del proyectil
 func _physics_process(delta):
 	position += direction * speed * delta
 	if bouncable:
@@ -57,6 +58,7 @@ func _physics_process(delta):
 			await get_tree().create_timer(2).timeout
 			queue_free()
 
+# Obtener direccion del jugador
 func setup(player: Node2D):
 	direction = (player.global_position - global_position).normalized()
 

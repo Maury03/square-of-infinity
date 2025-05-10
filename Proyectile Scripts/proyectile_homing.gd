@@ -22,18 +22,19 @@ var level_increase = 0.2
 
 var player_node = Node2D
 
-
+# Constantemente se mueve hacia el jugador
 func _physics_process(delta):
 	direction = (player_node.global_position - global_position).normalized()
 	rotation = direction.angle()
 	position += direction * speed * delta
 
+# Cambiar velocidad y guardar referencia al jugador
 func setup(player: Node2D):
 	player_node = player
 	if global_variables.proyectile_speed >= player_node.SPEED:
 		speed = player_node.SPEED * 0.75
 
-
+# Eliminar proyectil cuando se agote su tiempo
 func _on_timer_timeout() -> void:
 	queue_free()
 
