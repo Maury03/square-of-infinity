@@ -4,6 +4,7 @@ extends Node2D
 @export var player: Node2D
 var spawner_sprite
 
+# Spawnear nuevo proyectil
 func _on_timer_timeout():
 	if player:
 		var projectile = projectile_scene.instantiate()
@@ -14,6 +15,7 @@ func _on_timer_timeout():
 			$AudioStreamPlayer.stream = load("res://Sound Effects/proyectile_spawn.wav")
 			$AudioStreamPlayer.play(0.0)
 
+# Configurar spawner en base al proyectil elegido
 func _ready() -> void:
 	var rng = RandomNumberGenerator.new()
 	var projectile = projectile_scene.instantiate()
@@ -23,7 +25,7 @@ func _ready() -> void:
 	await get_tree().create_timer(rng.randf_range(0.0, 1.0)).timeout
 	$Timer.start()
 
-
+# Destruccion del nucleo
 func _on_player_entered(player: Node2D) -> void:
 	if player.is_powered:
 		player.power_down()

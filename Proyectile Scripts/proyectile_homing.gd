@@ -38,7 +38,7 @@ func setup(player: Node2D):
 func _on_timer_timeout() -> void:
 	queue_free()
 
-
+# Hacer daño al jugador
 func _on_player_entered(player: Node2D) -> void:
 	player.defeat()
 	queue_free()

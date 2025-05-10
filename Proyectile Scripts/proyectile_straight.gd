@@ -22,18 +22,20 @@ var max_cores = 2
 
 var player_node = Node2D
 
+# Constantemente se mueve en una sola direccion
 func _physics_process(delta):
 	position += direction * speed * delta
 
+# Obtiene su direccion inicial en base a la posicion del jugador
 func setup(player: Node2D):
 	direction = (player.global_position - global_position).normalized()
 
-
+# Al salir de la pantalla despawnea
 func _on_left_screen() -> void:
 	await get_tree().create_timer(2).timeout
 	queue_free()
 
-
+# Hacer daño al jugador
 func _on_player_entered(player: Node2D) -> void:
 	player.defeat()
 	queue_free()

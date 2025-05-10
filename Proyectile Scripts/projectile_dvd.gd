@@ -62,6 +62,7 @@ func _physics_process(delta):
 func setup(player: Node2D):
 	direction = (player.global_position - global_position).normalized()
 
+# Hacer daño al jugador
 func _on_player_entered(player: Node2D) -> void:
 	player.defeat()
 	queue_free()
