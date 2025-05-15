@@ -9,16 +9,23 @@ var spawner_sprite = load("res://Assets/Simple core.png")
 # Entre mas bajo sea el numero, mas rapido se genera el proyectil
 var spawn_time_multiplier = 0.25
 
+# -------Variables de dificultad legacy-------
 # Cantidad de nucleos de este proyectil en primer nivel
-var starting_amount = 1
+var starting_amount = 1 # Deprecated
 
 # Cuantos nucleos mas de este proyectil apareceran por nivel
 # Con valor de 1 se suma un proyectil cada nivel, con valor de 2 se suman dos por nivel
 # Con valor 0.5 se suma uno cada dos niveles
-var level_increase = 1
+var level_increase = 1 # Deprecated
 
 # Cantidad máxima de nucleos de este tipo que pueden aparecer
-var max_cores = 2
+var max_cores = 2 # Deprecated
+# --------------------------------------------
+
+# Variables de dificultad que controlan la cantidad de nucleos de este proyectil
+var proyectile_start = 0
+var proyectile_limit = 0 # Limite de 0 indica que no hay limite
+var proyectile_end = 0 # Fin de 0 indica que el proyectil nunca deja de aparecer
 
 var player_node = Node2D
 

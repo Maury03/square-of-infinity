@@ -9,16 +9,23 @@ var spawner_sprite = load("res://Assets/Homing core.png")
 # Entre mas bajo sea el numero, mas rapido se genera el proyectil
 var spawn_time_multiplier = 0.75
 
+# -------Variables de dificultad legacy-------
 # Cantidad de nucleos de este proyectil en primer nivel
-var starting_amount = 0
-
-# Cantidad máxima de nucleos de este tipo que pueden aparecer
-var max_cores = 1
+var starting_amount = 0 # Deprecated
 
 # Cuantos nucleos mas de este proyectil apareceran por nivel
 # Con valor de 1 se suma un proyectil cada nivel, con valor de 2 se suman dos por nivel
 # Con valor 0.5 se suma uno cada dos niveles
-var level_increase = 0.2
+var level_increase = 0.2 # Deprecated
+
+# Cantidad máxima de nucleos de este tipo que pueden aparecer
+var max_cores = 1 # Deprecated
+# --------------------------------------------
+
+# Variables que controlan la cantidad de nucleos de este proyectil
+var proyectile_start = 10
+var proyectile_limit = 2
+var proyectile_end = 0 # Fin de 0 indica que el proyectil nunca deja de aparecer
 
 var player_node = Node2D
 

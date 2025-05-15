@@ -11,7 +11,8 @@ func _ready() -> void:
 	camera_rect = get_camera_view_rect()
 	$OrbTimer.wait_time = global_variables.orb_spawn_time
 	player = $Player
-	generate_cores()
+	global_variables.choose_proyectiles()
+	generate_selected_cores()
 
 # Generación de orbes de energía
 func _on_orb_timer_timeout() -> void:
@@ -22,7 +23,7 @@ func _on_orb_timer_timeout() -> void:
 	generated_orb.global_position = orb_position
 	add_child(generated_orb)
 
-# Generación de nucleos
+# Generación de nucleos (legacy)
 func generate_cores() -> void:
 	for proyectile_data in global_variables.proyectile_array:
 		var counter = 0
@@ -36,6 +37,18 @@ func generate_cores() -> void:
 			add_child(new_core)
 			cores_remaining += 1
 			counter += 1
+
+# Generación de nucleos aleatorios
+func generate_selected_cores() -> void:
+	for chosen_proyectile in global_variables.chosen_proyectiles:
+		var corex = rng.randf_range(camera_rect.position.x, camera_rect.end.x)
+		var corey = rng.randf_range(camera_rect.position.y, camera_rect.end.y)
+		var new_core = load("res://Game Elements/spawner_proyectile.tscn").instantiate()
+		new_core.projectile_scene = chosen_proyectile.scene
+		new_core.player = player
+		new_core.global_position = Vector2(corex, corey)
+		add_child(new_core)
+		cores_remaining += 1
 
 # Obtener area de la camara
 func get_camera_view_rect() -> Rect2:
